@@ -1,8 +1,4 @@
-//just my folder you can hapus "package com.shape" ya
-package com.shape;
-
-//untuk dapat menggunakan fungsi mencari nilai absolut kita perlu mengimport library
-//sama halnya seperti mengimport Scanner
+//untuk dapat menggunakan fungsi mencari nilai absolut kita perlu mengimport library Math
 import java.lang.Math;
 
 public class Rectangle extends Shape {

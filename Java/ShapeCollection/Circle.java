@@ -1,6 +1,3 @@
-//just my folder you can hapus "package com.shape" ya
-package com.shape;
-
 public class Circle extends Shape {
 
     private Point p1;

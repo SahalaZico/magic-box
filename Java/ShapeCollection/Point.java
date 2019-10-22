@@ -1,6 +1,3 @@
-//just my folder you can hapus "package com.shape" ya
-package com.shape;
-
 public class Point {
 
     private int x, y;

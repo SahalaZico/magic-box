@@ -1,6 +1,3 @@
-//just my folder you can hapus "package com.shape" ya
-package com.shape;
-
 abstract class Shape {
     private String name;
 
