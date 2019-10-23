@@ -17,6 +17,18 @@ public class ShapeTest {
         System.out.println(p3.toString());
         p3.display();
 
+        //memanggil method untuk membandingkan p1 dengan p2
+        //jika p1 lebih besar dari p2 maka nilai yang dikembalikan adalah true, jika tidak nilai yang dikembalikan adalah false
+        System.out.println(p1.IsGreaterThan(p2));
+
+        //memanggil method untuk membandingkan p1 dengan p2
+        //jika p1 lebih kecil dari p2 maka nilai yang dikembalikan adalah true,jika tidak nilai yang dikembalikan adalah false
+        System.out.println(p1.IsLessThan(p2));
+
+        //memanggil method untuk membandingkan p1 dengan p2
+        //jika p1 sama dengan p2 maka nilai yang dikembalikan adalah true,jika tidak nilai yang dikembalikan adalah false
+        System.out.println(p1.IsEquals(p2));
+
         Circle c1 = new Circle();
         //lihat pada konstruktor point, konstructor Circle() akan mengeset nilai p1 dengan konstruktor Point()
         //sehingga nilai point adalah 0
