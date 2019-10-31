@@ -1,3 +1,4 @@
+
 public class Point implements Relation {
 
     private int x, y;
@@ -39,28 +40,25 @@ public class Point implements Relation {
     // Membandingkan apakah nilai kelas sama dengan objek yang dibandingkan
     @Override
     public boolean isEquals(Object o) {
-        if (this.getAbsis() == o.getAbsis() && this.getOrdinat() == o.getOrdinat())
-            return true;
-        else
+        if (o == null) {
             return false;
+        } else if (o instanceof Point) {
+            return (getOrdinat() == ((Point) o).getOrdinat() && getAbsis() == ((Point) o).getAbsis());
+        } else {
+            return false;
+        }
     }
 
-    // Membandingkan apakah nilai kelas lebih besar dari objek yang dibandingkan
     @Override
     public boolean isGreaterThan(Object o) {
-        if (this.getAbsis() > o.getAbsis() && this.getOrdinat() > o.getOrdinat())
-            return true;
-        else
-            return false;
+        //silahakan diisi sendiri
+        return false;
     }
 
-    // Membandingkan apakah nilai kelas lebih kecil dari objek yang dibandingkan
     @Override
     public boolean isLessThan(Object o) {
-        if (this.getAbsis() < o.getAbsis() && this.getOrdinat() < o.getOrdinat())
-            return true;
-        else
-            return false;
+        //silahkan diisi sendiri
+        return false;
     }
 
     // just method for adding x and y value
@@ -71,7 +69,7 @@ public class Point implements Relation {
 
     // return as string
     public String toString() {
-        return "Point{" + "x=" + x + ", y=" + y + '}';
+        return ("(" + getAbsis() + ", " + getOrdinat() + ")");
     }
 
     // menampilkan nilai x dan y
