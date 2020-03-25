@@ -7,11 +7,11 @@ int main()
     int arr[baris][kolom];
     int angka = 1;
     
-    for(int i = 0; i < kolom; i++)
+    for(int i = 0; i < baris; i++)
     {
-        for(int j = 0; j < baris; j++)
+        for(int j = 0; j < kolom; j++)
         {
-            	arr[j][i] = angka;
+            	arr[i][j] = angka;
             	angka++;          	
             	
         }
@@ -22,8 +22,12 @@ int main()
     {
         for(int j = 0; j < kolom; j++)
         {
-            	cout << arr[i][j] << " ";       	
-            	
+        	if(j<(kolom/2-i) || j>(kolom/2+i)){
+        		cout << "  ";
+			}
+			else{
+				cout << arr[i][j] << " ";   
+			} 		
         }
         cout << endl;
         

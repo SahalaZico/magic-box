@@ -11,9 +11,13 @@ int main()
     {
         for(int j = 0; j < kolom; j++)
         {
-            	arr[i][j] = angka;
-            	angka++;          	
-            	
+        	if(j<(kolom/2-i) || j>(kolom/2+i)){
+				arr[i][j] = 0;
+			}
+			else{
+				arr[i][j] = angka;
+            	angka++;  
+			} 	          		
         }
         
     }
@@ -22,8 +26,8 @@ int main()
     {
         for(int j = 0; j < kolom; j++)
         {
-        	if(j<(kolom/2-i) || j>(kolom/2+i)){
-        		cout << "   ";
+        	if(arr[i][j]==0){
+        		cout << "  ";
 			}
 			else{
 				cout << arr[i][j] << " ";   
