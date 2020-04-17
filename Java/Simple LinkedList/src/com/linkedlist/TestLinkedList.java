@@ -8,23 +8,26 @@ public class TestLinkedList {
 //        ml.makeEmpty();
         ml.add("Ace");
         ml.add(23);
-        ml.addFirst(21);
+        ml.addFirst(22);
+        ml.addFirst(22);
+        ml.add(22);
+        ml.add(22);
         ml.print();
         System.out.println(ml.contains("Ace"));
-        System.out.println("element: " + ml.get("Ace"));
-
-        ml.remove("Ace");
+        System.out.println("element: " + ml.get(23).element);
+        ml.replaceAll(22, 21);
+        System.out.println("List now: ");
+        ml.print();
+        ml.remove(21);
+        System.out.println("List now: ");
         ml.print();
 
-        System.out.println(ml.size());
-        System.out.println(listSize(ml));
-        System.out.println(ml.header.element);
-        ml.removeFirst();
-        ml.print();
-        ml.removeLast();
-        ml.print();
-
-
+//        System.out.println("size: " + ml.size());
+//        System.out.println("size: " + listSize(ml));
+//        ml.removeFirst();
+//        ml.print();
+//        ml.removeLast();
+//        ml.print();
     }
 
     public static <E> int listSize(MyLinkedList<E> theList) {

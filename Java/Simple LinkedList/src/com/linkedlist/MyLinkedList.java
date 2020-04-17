@@ -84,17 +84,44 @@ public class MyLinkedList<E> implements List {
         return null;
     }
 
+    public void replaceAll(E oldValue, E newValue) {
+        ListNode p = header;
+        while (p != null) {
+            try {
+                if (p.element.equals(oldValue)) {
+                    p.element = newValue;
+                }
+                p = p.next;
+            } catch (Exception ex) {
+                p = p.next;
+            }
+        }
+    }
+
     public void remove(E element) {
         if (isEmpty()) {
             System.out.println("List Kosong");
         } else {
             ListNode<E> prev = new ListNode<>(null);
             ListNode<E> currentNode = header;
-            while (currentNode != null && !currentNode.element.equals(element)) {
+            while (currentNode != null) {
+                if (element.equals(header.element)) {
+                    removeFirst();
+                }
                 prev = currentNode;
                 currentNode = currentNode.next;
+                if (currentNode != last && currentNode != null) {
+                    if (currentNode.element.equals(element)) {
+                        prev.next = currentNode.next;
+                    }
+                } else if(currentNode != null){
+                    if (currentNode.element.equals(element)) {
+                        removeLast();
+                    }
+                }
+
             }
-            prev.next = currentNode.next;
+
         }
     }
 
