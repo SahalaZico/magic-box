@@ -16,6 +16,7 @@ if ($_SESSION["loggedIn"]) {
     header("Location: index.php");
     exit;
 }
+
 $email = $_POST["email"];
 $password = $_POST["password"];
 $authenticated = false;
@@ -41,4 +42,4 @@ if (!$authenticated) {
     $_SESSION["loggedIn"] = true;
     header("Location: index.php");
 }
-echo ($_SESSION["loggedInUser"]);
+echo($account["email"]);

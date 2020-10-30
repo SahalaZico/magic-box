@@ -9,5 +9,5 @@ if ($_SESSION["loggedIn"]) {
 
 $loader = new Twig_Loader_Filesystem("templates");
 $twig = new Twig_Environment($loader);
-$template = $twig->load('login.html');
+$template = $twig->load('registration.html');
 echo $template->render();
