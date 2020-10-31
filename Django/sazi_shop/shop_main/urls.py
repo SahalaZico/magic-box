@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.index),
     path('produk', views.produk),
     path('test', views.test_page),
+    path('register', views.register),
 ]
