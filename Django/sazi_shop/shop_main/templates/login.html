@@ -14,7 +14,8 @@
   <div class="container text-center" style="margin-top:20px">
     <div class="row">
       <div class="col-md-4 offset-md-4">
-        <form action="/shop/login" method="post">
+        <form method="post">
+          {% csrf_token %}
           <h1 class="h3 mb-3 font-weight-normal">
             Login
           </h1>

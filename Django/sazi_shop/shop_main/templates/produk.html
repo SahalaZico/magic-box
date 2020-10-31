@@ -23,6 +23,7 @@
 </head>
 
 <body>
+    {{ visit }}
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <a class="navbar-brand" href="/shop/"><img src="{% static "images/logo.jpg" %}" alt="Sazi Logo" width="60px" height="40px"></a>
         <ul class="navbar-nav ml-auto">
@@ -33,7 +34,7 @@
                 <a class="nav-link" href="/shop/produk">Produk</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="/shop/login">Login</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/shop/register">Register</a>
