@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .models import Produk, Akun
+from .models import Produk, Akun, Cart
 
 def session(request):
     request.session['logIn'] = False
@@ -9,6 +9,7 @@ def session(request):
 def index(request):
     context ={
         'username' :request.session['user'],
+        'logIn': request.session['logIn'],
     }
     return render(request, 'index.html',context)
 
@@ -16,11 +17,47 @@ def produk(request):
     prod = Produk.objects.all()
     context = {
         'Produk':prod,
+        'username' :request.session['user'],
+        'logIn': request.session['logIn'],
     }
     return render(request, 'produk.html',context)
 
-def test_page(request):
-    return render(request, 'test.html')
+def produk_search(request):
+    search_name = request.GET['search']
+    prod = Produk.objects.filter(nama__icontains = search_name)
+    context = {
+        'Produk':prod,
+        'username' :request.session['user'],
+        'logIn': request.session['logIn'],
+    }
+    return render(request, 'produk.html',context)
+
+def produk_detail(request,q):
+    search_id = q
+    prod = Produk.objects.filter(id = search_id)
+    context = {
+        'Produk':prod,
+        'username' :request.session['user'],
+        'logIn': request.session['logIn'],
+    }
+    return render(request, 'produk_detail.html',context)
+
+def add_to_cart(request):
+    user = str(request.session['user'])
+    Cart.objects.create(username = user,
+    produk_id = request.POST.get('produk_id'),
+    quantity = request.POST.get('quantity'))
+    return HttpResponseRedirect("/shop/produk")
+
+def cart(request):
+    prod = Cart.objects.filter(username=request.session['user'])
+    context = {
+        'Produk':prod,
+        'username' :request.session['user'],
+        'logIn': request.session['logIn'],
+    }
+    print(prod)
+    return render(request, 'cart.html',context)
 
 def register(request):
     if request.method == 'POST':
@@ -43,6 +80,7 @@ def login(request):
             request.session['logIn'] = True
             request.session['user'] = username
             print(request.session['user'])
+            print(request.session['logIn'])
             return HttpResponseRedirect("/shop")
         
     
