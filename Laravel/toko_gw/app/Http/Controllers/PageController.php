@@ -20,15 +20,21 @@ class PageController extends Controller
     public function auth(Request $req){
         $data = $req->input();
         $req->session()->put('username', $data['email']);
-        return redirect('/produk');
+        return redirect('/');
     }
 
-    public function auth2(Request $req){
+    public function registration(){
+        return view('registration');
+    }
+
+    public function registration_process(Request $req){
         $data = $req->input();
-        $akun = Akun::where('email',$data['email']);
-        print('hai');
-        print($akun->get('email'));
-        return redirect('/produk');
+        Akun::create([
+            'email'=> $data['email'],
+            'password' => $data['psw'],
+            'role' => 0,]
+        );
+        return redirect('/');
     }
 
     public function logout(){

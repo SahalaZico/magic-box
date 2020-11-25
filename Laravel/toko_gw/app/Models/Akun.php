@@ -11,5 +11,6 @@ class Akun extends Model
     protected $table = 'akun';
     protected $primaryKey = 'email';
     public $incrementing = false;
+    public $timestamps = false;
     protected $fillable = ['email','password','role'];
 }

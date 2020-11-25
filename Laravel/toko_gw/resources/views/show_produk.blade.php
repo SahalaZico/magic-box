@@ -59,7 +59,12 @@
         <div class="my-3 py-3">
             <h2 class="display-5" style="margin-top: 10%;">Harga</h2>
             <p class="lead">Rp. {{$produk->harga_per_unit}}</p>
-            <a href="" class="badge badge-danger">add to cart</a>
+            <form class="form-inline" method="POST" action="/produk/{{$produk->id}}">
+                @method('PUT')
+                @csrf
+            <input class="form-control mr-sm-2" name="stok" type="number" value="{{$produk->stok}}" min="1" max="99">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ubah stok</button>
+            </form>
         </div>
     </div>
 

@@ -14,9 +14,18 @@ class ProdukController extends Controller
         return view('produk', compact('produk'));
     }
 
-    public function detail($id)
+    public function show($id)
     {
         $produk=Produk::find($id);
-        return view('produk_detail', compact('produk'));
+        return view('show_produk', compact('produk'));
+    }
+
+    public function update_stok($id,request $req)
+    {
+        $produk=Produk::find($id);
+        $data = $req->input();
+        $produk->stok = $data['stok'];
+        $produk->save();
+        return redirect('/produk');
     }
 }

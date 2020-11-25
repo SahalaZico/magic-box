@@ -48,15 +48,17 @@
 
     @foreach($produk as $prod)
     <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+        <a href="/produk/{{$prod->id}}">
         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
             <div class="my-3 p-3">
-                <h2 class="display-5">{{$prod->id}}-{{$prod->nama}}</h2>
+                <h2 class="display-5">{{$prod->nama}}</h2>
             </div>
             <div class="bg-white shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
                 <img src="{{$prod->gambar}}" alt="" width="40%"
                     height="100%">
             </div>
         </div>
+        </a>
         <div class="my-3 py-3">
             <h2 class="display-5" style="margin-top: 10%;">Harga</h2>
             <p class="lead">Rp. {{$prod->harga_per_unit}}</p>
