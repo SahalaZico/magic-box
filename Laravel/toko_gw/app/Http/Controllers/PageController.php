@@ -19,7 +19,11 @@ class PageController extends Controller
 
     public function auth(Request $req){
         $data = $req->input();
-        $req->session()->put('username', $data['email']);
+        $username = $data['email'];
+        $password = $data['password'];
+        $acc = ['email' => $username, 'password' => $password];
+        $akun = Akun::where($acc)->get();
+        $req->session()->put('username', $akun[0]['email']);
         return redirect('/');
     }
 
