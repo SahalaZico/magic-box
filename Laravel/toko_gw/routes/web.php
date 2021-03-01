@@ -15,4 +15,5 @@ Route::post('/registration_process',  [PageController::class, 'registration_proc
 
 Route::get('/produk', [ProdukController::class, 'all']);
 Route::get('/produk/{id}', [ProdukController::class, 'show']);
+Route::get('/produk/delete/{id}', [ProdukController::class, 'delete']);
 Route::put('/produk/{id}', [ProdukController::class, 'update_stok']);

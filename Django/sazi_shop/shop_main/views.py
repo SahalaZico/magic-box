@@ -1,10 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Produk, Akun, Cart
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import ProdukSerializer
 
-def session(request):
-    request.session['logIn'] = False
-    request.session['user'] = ""
+@api_view(['GET'])
+def apiOverview(request):
+    api_urls ={
+        'List':'/produk-list/',
+        'Detail':'/produk-detail/<str:pk>/',
+        'Create':'/produk-create/',
+        'Update':'/produk-update/<str:pk>/',
+        'Delete':'/produk-delete/<str:pk>/',
+    }
+    return Response(api_urls)
+
+@api_view(['GET'])
+def produkList(request):
+    produk = Produk.objects.all()
+    serializer = ProdukSerializer(produk, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def produkDetail(request, pk):
+    produk = Produk.objects.get(id=pk)
+    serializer = ProdukSerializer(produk, many=False)
+    return Response(serializer.data)
 
 def index(request):
     context ={
@@ -17,8 +39,6 @@ def produk(request):
     prod = Produk.objects.all()
     context = {
         'Produk':prod,
-        'username' :request.session['user'],
-        'logIn': request.session['logIn'],
     }
     return render(request, 'produk.html',context)
 
@@ -47,6 +67,15 @@ def add_to_cart(request):
     Cart.objects.create(username = user,
     produk_id = request.POST.get('produk_id'),
     quantity = request.POST.get('quantity'))
+    return HttpResponseRedirect("/shop/produk")
+
+def transaction(request):
+    user = str(request.session['user'])
+    Transaction.objects.create(username = user,
+    produk_id = request.POST.get('produk_id'),
+    quantity = request.POST.get('quantity'),
+    total_price = request.POST.get('total_price'))
+    prod = Produk.objects.filter(request.POST.get('produk_id')).update(stok = stok - request.POST.get('stok'))
     return HttpResponseRedirect("/shop/produk")
 
 def cart(request):

@@ -62,6 +62,7 @@
         <div class="my-3 py-3">
             <h2 class="display-5" style="margin-top: 10%;">Harga</h2>
             <p class="lead">Rp. {{$prod->harga_per_unit}}</p>
+            <a class="btn btn-primary" href="/produk/delete/{{$prod->id}}" role="button">Delete</a>
             <a href="" class="badge badge-danger">add to cart</a>
         </div>
     </div>

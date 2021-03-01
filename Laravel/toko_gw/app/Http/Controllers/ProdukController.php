@@ -20,6 +20,12 @@ class ProdukController extends Controller
         return view('show_produk', compact('produk'));
     }
 
+    public function delete($id)
+    {
+        $produk=Produk::find($id)->delete();
+        return redirect('/produk');
+    }
+
     public function update_stok($id,request $req)
     {
         $produk=Produk::find($id);
